@@ -1,0 +1,25 @@
+
+
+spring:
+
+
+  application:
+    name: mcp-filesystem-client
+
+
+
+  ai:
+    mcp:
+      client:
+        stdio:
+
+          connections:
+            filesystem:
+              command: 'npx'
+              args:
+                - '-y'
+                - '@modelcontextprotocol/server-filesystem'
+                - '/Users/habuma/mcp-playground'
+
+        toolcallback:
+          enabled: true
