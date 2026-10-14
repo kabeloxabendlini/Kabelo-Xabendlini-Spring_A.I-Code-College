@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter1/simple-application/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter2/licensing-service/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter3/licensing-service/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter4/licensing-service/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter5/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter6/Final/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter6/Initial/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter7/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter8/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter9/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter10/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter11/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/chapter12/pom.xml" />
+        <option value="$PROJECT_DIR$/manning-smia-master/Monitoring/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
