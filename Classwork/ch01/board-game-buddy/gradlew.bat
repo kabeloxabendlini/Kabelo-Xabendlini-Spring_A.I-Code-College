@@ -14,13 +14,13 @@
 @rem limitations under the License.
 @rem
 @rem SPDX-License-Identifier: Apache-2.0
-@remx
+@rem
 
 @if "%DEBUG%"=="" @echo off
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows
-@remmmm
+@rem
 @rem ##########################################################################
 
 @rem Set local scope for the variables with windows NT shell

@@ -1,4 +1,3 @@
-
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.5'
@@ -10,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(24)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -19,25 +18,30 @@ repositories {
 }
 
 ext {
-    set('springAiVersion', "1.0.3")  
+    set('springAiVersion', "1.0.3")
 }
 
 dependencies {
+    // Spring Boot web application
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring AI OpenAI integration
     implementation 'org.springframework.ai:spring-ai-starter-model-openai'
+
+    // Spring AOP support for Spring Retry's proxy-based retry mechanism
+    runtimeOnly 'org.springframework.boot:spring-boot-starter-aop'
+
+    // Testing dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    
 
-    
+    // WireMock for testing without making real OpenAI API calls
     testImplementation 'org.wiremock.integrations:wiremock-spring-boot:3.9.0'
-    
-    
 }
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}" 
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
     }
 }
 
