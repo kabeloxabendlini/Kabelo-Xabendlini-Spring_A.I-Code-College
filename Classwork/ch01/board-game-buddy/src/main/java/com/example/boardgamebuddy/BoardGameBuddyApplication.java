@@ -1,4 +1,3 @@
-```java
 package com.example.boardgamebuddy;
 
 import org.springframework.boot.SpringApplication;
@@ -13,4 +12,3 @@ public class BoardGameBuddyApplication {
         SpringApplication.run(BoardGameBuddyApplication.class, args);
     }
 }
-
