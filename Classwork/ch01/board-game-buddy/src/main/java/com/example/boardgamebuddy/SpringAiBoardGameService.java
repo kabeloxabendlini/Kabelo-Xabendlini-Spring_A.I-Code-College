@@ -1,9 +1,9 @@
 package com.example.boardgamebuddy;
 
 import org.springframework.ai.chat.client.ChatClient;
-// import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;
 
-// @Service
+@Service
 public class SpringAiBoardGameService implements BoardGameService {
 
     private final ChatClient chatClient;
@@ -22,3 +22,4 @@ public class SpringAiBoardGameService implements BoardGameService {
         return new Answer(answerText);
     }
 }
+
