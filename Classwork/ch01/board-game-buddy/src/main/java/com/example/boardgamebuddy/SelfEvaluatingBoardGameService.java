@@ -5,11 +5,13 @@ import org.springframework.ai.chat.evaluation.RelevancyEvaluator;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.evaluation.EvaluationRequest;
 import org.springframework.ai.evaluation.EvaluationResponse;
+import org.springframework.context.annotation.Primary;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 
 @Service
+@Primary
 public class SelfEvaluatingBoardGameService implements BoardGameService {
 
     private final ChatClient chatClient;

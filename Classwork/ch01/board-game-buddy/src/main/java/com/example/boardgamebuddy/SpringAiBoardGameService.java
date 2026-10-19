@@ -2,15 +2,13 @@ package com.example.boardgamebuddy;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
-import org.springframework.context.annotation.Primary;
 
 @Service
-@Primary
-public class SelfEvaluatingBoardGameService implements BoardGameService {
+public class SpringAiBoardGameService implements BoardGameService {
 
     private final ChatClient chatClient;
 
-    public SelfEvaluatingBoardGameService(ChatClient.Builder chatClientBuilder) {
+    public SpringAiBoardGameService(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder.build();
     }
 
@@ -24,4 +22,3 @@ public class SelfEvaluatingBoardGameService implements BoardGameService {
         return new Answer(answerText);
     }
 }
-
