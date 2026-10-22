@@ -20,9 +20,14 @@ public class GameTools {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(GameTools.class);
 
-  @Tool(name = "getGameComplexity",
-      description = "Returns a game's complexity/difficulty " +
-          "given the game's title/name.")
+  @Tool(name = "listGames",
+        description = "Lists the titles of all games that Board Game Buddy has data for.")
+  public List<String> listGames() {
+      LOGGER.info("Listing all games");
+      var titles = new ArrayList<String>();
+      gameRepository.findAll().forEach(g -> titles.add(g.title()));
+    return titles;
+  }
   public GameComplexityResponse getGameComplexity(
             @ToolParam(description="The title of the game") 
             String gameTitle) {
