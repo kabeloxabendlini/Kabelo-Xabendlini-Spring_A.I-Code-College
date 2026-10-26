@@ -1,80 +1,32 @@
-
-
 package com.example.boardgamebuddy;
 
-import org.springframework.ai.openai.OpenAiAudioTranscriptionModel;
-import org.springframework.ai.openai.audio.speech.SpeechModel;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
+/**
+ * Temporary local implementation of VoiceService.
+ *
+ * This implementation removes the OpenAI dependency so that
+ * the application can use Ollama for chat without requiring
+ * an OpenAI API key.
+ *
+ * Voice functionality will be added separately using a local
+ * speech-to-text and text-to-speech solution.
+ */
 @Service
 public class OpenAiVoiceService implements VoiceService {
 
-  private final OpenAiAudioTranscriptionModel transcriptionModel;
-  
-  private final SpeechModel speechModel;
-  
+    @Override
+    public String transcribe(Resource audioFileResource) {
+        throw new UnsupportedOperationException(
+            "Local voice transcription has not been configured yet."
+        );
+    }
 
-  
-  
-  /*
-  
-  public OpenAiVoiceService(
-      OpenAiAudioTranscriptionModel transcriptionModel) {
-    this.transcriptionModel = transcriptionModel; 
-  }
-  
-  */
-
-
-  public OpenAiVoiceService(
-      OpenAiAudioTranscriptionModel transcriptionModel,
-      SpeechModel speechModel) {
-    this.transcriptionModel = transcriptionModel;
-    this.speechModel = speechModel;
-  }
-  
-
-  /*
-  
-
-  ...
-
-
-   */
-
-  
-
-  @Override
-  public String transcribe(Resource audioFileResource) {
-    return transcriptionModel.call(audioFileResource); 
-  }
-
-  
-
-  /*
-
-  
-  @Override
-  public Resource textToSpeech(String text) {
-    throw new UnsupportedOperationException("Not implemented yet");
-  }
-
-  
-  */
-
-  
-  @Override
-  public Resource textToSpeech(String text) {
-    var speechBytes = speechModel.call(text);
-    return new ByteArrayResource(speechBytes);
-  }
-  
-
-  
-
+    @Override
+    public Resource textToSpeech(String text) {
+        throw new UnsupportedOperationException(
+            "Local text-to-speech has not been configured yet."
+        );
+    }
 }
-
-
-

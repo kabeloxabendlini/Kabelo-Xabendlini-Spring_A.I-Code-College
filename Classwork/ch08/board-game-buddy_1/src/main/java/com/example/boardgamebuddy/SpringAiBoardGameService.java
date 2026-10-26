@@ -11,35 +11,38 @@ import static org.springframework.ai.chat.client.advisor.vectorstore.QuestionAns
 @Service
 public class SpringAiBoardGameService implements BoardGameService {
 
-  private final ChatClient chatClient;
+    private final ChatClient chatClient;
 
-  public SpringAiBoardGameService(ChatClient chatClient) {
-    this.chatClient = chatClient;
-  }
+    public SpringAiBoardGameService(ChatClient chatClient) {
+        this.chatClient = chatClient;
+    }
 
-  @Value("classpath:/promptTemplates/systemPromptTemplate.st")
-  Resource promptTemplate;
+    @Value("classpath:/promptTemplates/systemPromptTemplate.st")
+    Resource promptTemplate;
 
-  @Override
-  public Answer askQuestion(Question question, String conversationId) {
-    var gameNameMatch = String.format(
-            "gameTitle == '%s'",
-            normalizeGameTitle(question.gameTitle()));
+    @Override
+    public Answer askQuestion(Question question, String conversationId) {
+        String gameTitle = question.gameTitle();
 
-    return chatClient.prompt()
-        .user(question.question())
-        .system(systemSpec -> systemSpec
-            .text(promptTemplate)
-            .param("gameTitle", question.gameTitle()))
-        .advisors(advisorSpec -> advisorSpec
-            .param(FILTER_EXPRESSION, gameNameMatch)
-            .param(CONVERSATION_ID, conversationId))
-        .call()
-        .entity(Answer.class);
-  }
+        String gameNameMatch = String.format(
+                "gameTitle == '%s'",
+                normalizeGameTitle(gameTitle));
 
-  private String normalizeGameTitle(String in) {
-    return in.toLowerCase().replace(' ', '_');
-  }
+        String answerText = chatClient.prompt()
+                .user(question.question())
+                .system(systemSpec -> systemSpec
+                        .text(promptTemplate)
+                        .param("gameTitle", gameTitle))
+                .advisors(advisorSpec -> advisorSpec
+                        .param(FILTER_EXPRESSION, gameNameMatch)
+                        .param(CONVERSATION_ID, conversationId))
+                .call()
+                .content();
 
+        return new Answer(gameTitle, answerText);
+    }
+
+    private String normalizeGameTitle(String in) {
+        return in.toLowerCase().replace(' ', '_');
+    }
 }

@@ -8,7 +8,7 @@ group = 'com.example'
 version = '0.0.7-SNAPSHOT'
 
 java {
-    sourceCompatibility = '24'
+    sourceCompatibility = '25'
 }
 
 repositories {
@@ -20,31 +20,36 @@ ext {
 }
 
 dependencies {
+    // Spring Boot web application and health endpoints
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
+
+    // Use a local Ollama model instead of the OpenAI API
+    implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
+
+    // Qdrant vector database and Spring AI vector-store advisors
     implementation 'org.springframework.ai:spring-ai-starter-vector-store-qdrant'
     implementation 'org.springframework.ai:spring-ai-advisors-vector-store'
 
-    
+    // Database access and embedded H2 database
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    
-    
     runtimeOnly 'com.h2database:h2'
-    
 
+    // Testing dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.springframework.ai:spring-ai-spring-boot-testcontainers'
     testImplementation 'org.testcontainers:qdrant'
+
+    // Docker Compose development support
     developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     developmentOnly 'org.springframework.ai:spring-ai-spring-boot-docker-compose'
 }
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}" 
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
     }
 }
 
