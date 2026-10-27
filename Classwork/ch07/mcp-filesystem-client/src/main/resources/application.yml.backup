@@ -1,0 +1,27 @@
+
+
+spring:
+
+
+  application:
+    name: mcp-filesystem-client
+
+
+
+  ai:
+    mcp:
+      client:
+        stdio:
+
+          connections:
+                        filesystem:
+              command: 'cmd.exe'
+              args:
+                - '/c'
+                - 'npx'
+                - '-y'
+                - '@modelcontextprotocol/server-filesystem'
+                - 'C:\mcp-playground'
+
+        toolcallback:
+          enabled: true

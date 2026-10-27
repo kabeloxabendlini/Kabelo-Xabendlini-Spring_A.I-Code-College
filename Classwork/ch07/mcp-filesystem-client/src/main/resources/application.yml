@@ -1,25 +1,26 @@
-
-
-spring:
-
-
+﻿spring:
   application:
     name: mcp-filesystem-client
 
-
-
   ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: "qwen2.5:3b"
+
     mcp:
       client:
         stdio:
-
           connections:
             filesystem:
-              command: 'npx'
+              command: 'cmd.exe'
               args:
+                - '/c'
+                - 'npx'
                 - '-y'
                 - '@modelcontextprotocol/server-filesystem'
-                - '/Users/habuma/mcp-playground'
+                - 'C:\mcp-playground'
 
         toolcallback:
           enabled: true

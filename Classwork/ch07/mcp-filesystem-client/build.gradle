@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(24)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -23,11 +23,12 @@ ext {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
 
-    
+    // Use the local Ollama model instead of the paid OpenAI API.
+    implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
+
+    // Keep the MCP client so the application can access filesystem tools.
     implementation 'org.springframework.ai:spring-ai-starter-mcp-client'
-    
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

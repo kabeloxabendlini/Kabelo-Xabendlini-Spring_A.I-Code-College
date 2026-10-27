@@ -9,7 +9,8 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(24)
+        // Use Java 25, which is installed on this computer.
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -40,3 +41,4 @@ dependencyManagement {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
